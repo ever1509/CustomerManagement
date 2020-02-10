@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CustomerManagement.WebUI.Models.Entities.CustomerOrder>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Customer
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CustomerOrderId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CustomerOrderId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CustomerOrderId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
